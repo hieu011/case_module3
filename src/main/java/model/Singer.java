@@ -15,7 +15,10 @@ public class Singer {
     public String getImage_singer() {
         return image_singer;
     }
-
+    public Singer(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
     public void setImage_singer(String image_singer) {
         this.image_singer = image_singer;
     }

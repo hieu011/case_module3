@@ -164,6 +164,9 @@ public class SongDAO extends ConnectionDatabase {
                 String image_singer = rs.getString("image_singer");
                 Singer singer = new Singer(singerID, singers,image_singer);
                 String duration = rs.getString("duration");
+                if(duration == null){
+                    duration = " ";
+                }
                 songs.add(new Song(id, name, authors, category, singer, song, image,duration));
             }
             connection.close();

@@ -28,7 +28,9 @@ public class AuthorDAO extends ConnectionDatabase {
             while (rs.next()){
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
+                
                 authors.add(new Author(id, name));
+
             }
         }catch (Exception e){
             System.out.println(e.getMessage());

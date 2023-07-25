@@ -1,155 +1,104 @@
 package controller;
 
-import dto.Pageable;
+
 import model.User;
-import service.UserService;
-import model.Role;
-import model.User;
-import service.RoleService;
-import service.UserService;
-import utils.PasswordEncoder;
+import serviceadmin.IUserService;
+import serviceadmin.UserServiceMySQL;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/admin/users")
-public class UserServlet extends HttpServlet {
-    RoleService roleService = new RoleService();
-    UserService userService = new UserService();
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        if (action == null) {
-            action = "";
-        }
-        switch (action) {
-            case "edit":
-                editUser(req, resp);
-                break;
-            default:
-                showUser(req,resp);
-        }
-    }
+@WebServlet(name = "UserServlet", urlPatterns = "/users")
+public class UserServlet extends HttpServlet {
+    private IUserService userService = new UserServiceMySQL();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //localhost:8080/customers          // show list
+        //localhost:8080/customers?action=create
+        //localhost:8080/customers?action=edit&id=2
+        //localhost:8080/customers?action=delete&id=2
+        //localhost:8080/customers?action=advavd            // show list
+        resp.setCharacterEncoding("UTF-8");
+        req.setCharacterEncoding("UTF-8");
+
         String action = req.getParameter("action");
         if (action == null) {
             action = "";
         }
         switch (action) {
             case "edit":
-                showEditUser(req,resp);
+                showEditUser(req, resp);
                 break;
             case "delete":
-                deleteUser(req,resp);
+                deleteUser(req, resp);
                 break;
             default:
-                showUser(req,resp);
+                showListUser(req, resp);
         }
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding("UTF-8");
+        req.setCharacterEncoding("UTF-8");
+        String action = req.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "edit":
+                updateUser(req, resp);
+                break;
+        }
+    }
+
+    private void deleteUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int id = Integer.parseInt((req.getParameter("id")));
+        userService.remove(id);
+
+        req.getSession().setAttribute("messageDeleteUser", "Xóa thành công");
+        resp.sendRedirect("/users");
     }
 
     private void showEditUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
+        int id = Integer.parseInt((req.getParameter("id")));
+
         User user = userService.findById(id);
-        req.setAttribute("user",user);
-        req.setAttribute("roles",roleService.findAll());
-        req.getRequestDispatcher("/edituser.jsp").forward(req,resp);
-    }
-
-    private void editUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        int roleId = Integer.parseInt(req.getParameter("role"));
-
-        Role role = roleService.findById(roleId);
-        User user = new User(id,username,PasswordEncoder.encode(password),role);
-        userService.updateUser(user);
-
-        req.setAttribute("user",user);
-        req.setAttribute("roles", roleService.findAll());
-        req.setAttribute("message", "edited");
-        req.getRequestDispatcher("/edituser.jsp").forward(req,resp);
-    }
-
-
-    private void deleteUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
-        userService.deleteUser(id);
-        showUser(req,resp);
-    }
-
-    private void showUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String search = req.getParameter("search");
-
-        int page = 1;
-        if(req.getParameter("page") != null){
-            page = Integer.parseInt(req.getParameter("page"));
-        }
-        String sortBy = req.getParameter("sortby");
-        if(sortBy == null){
-            sortBy = "asc";
-        }
-        String nameField = req.getParameter("nameField");
-        if(nameField == null){
-            nameField = "user.id";
-        }
-        Pageable pageable = new Pageable(search, page, 5 , nameField, sortBy);
-        List<User> users = userService.findAll(pageable);
-        req.setAttribute("users",users);
-        req.setAttribute("pageable", pageable);
-        req.getRequestDispatcher("/JSPuser/users.jsp").forward(req,resp);
-
-    }
-
-    private void signup(HttpServletRequest req, HttpServletResponse resp) {
-    }
-
-    private void updateInfo(HttpServletRequest req, HttpServletResponse resp) {
-
-    }
-
-    private void checkLogin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        User user = userService.login(username, password);
-        if (user == null) {
-//            req.setAttribute("error", "Tài khoản không tồn tại hoặc mật khẩu không đúng !");
-            req.getRequestDispatcher("/JSPurer/signin.jsp").forward(req, resp);
-//            response.sendRedirect("user?action=login");
-        } else {
-            HttpSession session = req.getSession();
-            session.setAttribute("user", user);
-            resp.sendRedirect("/home");
-        }
-    }
-
-    private void showCreate (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-    {
-        req.setAttribute("roles", roleService.findAll());
-        req.getRequestDispatcher("/JSPuser/signup.jsp").forward(req, resp);
-    }
-
-    private void createUser (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-    {
-        String username = req.getParameter("username");
-        String password = PasswordEncoder.encode(req.getParameter("password"));
-        int roleId = Integer.parseInt(req.getParameter("role_id"));
-        Role role = roleService.findById(roleId);
-        User user = new User(username, password, role);
-        userService.createUser(user);
         req.setAttribute("user", user);
-        req.setAttribute("message", "Created");
-        req.setAttribute("roles", roleService.findAll());
-        req.getRequestDispatcher("/JSPuser/signup.jsp").forward(req, resp);
 
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/song/EditUser.jsp");
+        requestDispatcher.forward(req, resp);
+    }
+
+    private void showListUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<User> userList = userService.findAll();
+        req.setAttribute("users", userList);
+
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/song/User.jsp");
+        requestDispatcher.forward(req, resp);
+    }
+
+    private void updateUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String name = req.getParameter("username");
+        String password = req.getParameter("password");
+
+        User user = userService.findById(id);
+
+        user.setUsername(name);
+        user.setPassword(password);
+
+        userService.update(id, user);
+
+        req.getSession().setAttribute("messageEdit", "Sửa thành công");
+        resp.sendRedirect("/users");            // Dùng respone để sendRedirect
     }
 
 }

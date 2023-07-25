@@ -74,14 +74,23 @@ public class HomeServlet extends HttpServlet {
         resp.sendRedirect("/home");
     }
     private void userLogin(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-
+        boolean check = true;
         if(req.getParameter("songselect") != null){
             int idMusicSelect = Integer.parseInt(req.getParameter("songselect"));
             Song songSelect = songService.findByID(idMusicSelect);
-            songSelected.add(songSelect);
-            Gson gsonSongSelect = new Gson();
-            req.setAttribute("songSelected",gsonSongSelect.toJson(songSelected).toString());
+            for (int i = 0; i < songSelected.size(); i++){
+                if(songSelected.get(i).getId() == songSelect.getId()){
+                    req.setAttribute("samesong","Bài hát đã thêm vào danh sách!");
+                    check = false;
+                    break;
+                }
+            }
+            if(check){
+                songSelected.add(songSelect);
+            }
         };
+        Gson gsonSongSelect = new Gson();
+        req.setAttribute("songSelected",gsonSongSelect.toJson(songSelected).toString());
         List<Song> songs = songService.findAll();
         req.setAttribute("songs",songs);
 

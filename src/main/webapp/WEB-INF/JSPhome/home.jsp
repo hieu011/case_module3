@@ -341,7 +341,7 @@ https://templatemo.com/tm-584-pod-talk
               <div class="">
                 <div class="custom-block-icon-wrap">
                   <div class="section-overlay"></div>
-                  <a href="detail-page.html" class="custom-block-image-wrap">
+                  <a href="javascript:void(0)" class="custom-block-image-wrap">
                     <img src="${song.getImage()}"
                          class="custom-block-image img-fluid" alt="">
 
@@ -360,7 +360,7 @@ https://templatemo.com/tm-584-pod-talk
                 </div>
 
                 <h5 class="mb-2">
-                  <a href="detail-page.html">
+                  <a href="javascript:void(0)">
                     ${song.getName()}
                   </a>
                 </h5>
@@ -398,9 +398,10 @@ https://templatemo.com/tm-584-pod-talk
               <div class="d-flex flex-column ms-auto">
                 <form action="/home?action=userLogin" method="post">
                 <button type="submit" style="border: none;background-color: white;" id="btn-music-select">
+                  <input type="hidden" value="${song.getId()}" name="songselect">
                   <div class="badge ms-auto">
                     <i class="bi-bookmark"></i>
-                    <input type="hidden" value="${song.getId()}" name="songselect">
+
                   </div>
                 </button>
                 </form>
@@ -414,12 +415,13 @@ https://templatemo.com/tm-584-pod-talk
         <!-- <div class="swiper-button-prev swiper-button-white"></div>
         <div class="swiper-button-next swiper-button-white"></div> -->
 
-        <nav aria-label="Page navigation example" class="col-5">
-          <ul class="pagination m-4 justify-content-center d-flex listPage">
 
-          </ul>
-        </nav>
       </div>
+      <nav aria-label="Page navigation example" class="col-5" style="margin-left: 370px">
+        <ul class="pagination m-4 justify-content-center d-flex listPage">
+
+        </ul>
+      </nav>
     </div>
   </section>
 
@@ -527,7 +529,7 @@ https://templatemo.com/tm-584-pod-talk
           <div class="custom-block custom-block-full">
             <div class="custom-block-image-wrap">
               <a href="detail-page.html">
-                <img src="images/podcast/27376480_7326766.jpg" class="custom-block-image img-fluid"
+                <img src="/assets/image-song/SongK-popImage/How You Like That.jpg" class="custom-block-image img-fluid"
                      alt="">
               </a>
             </div>
@@ -535,20 +537,21 @@ https://templatemo.com/tm-584-pod-talk
             <div class="custom-block-info">
               <h5 class="mb-2">
                 <a href="detail-page.html">
-                  Vintage Show
+                  How You Like That
                 </a>
               </h5>
 
               <div class="profile-block d-flex">
-                <img src="images/profile/woman-posing-black-dress-medium-shot.jpg"
+                <img src="/assets/image-singer/SingerK-pop/BlackPink.jpg"
                      class="profile-block-image img-fluid" alt="">
 
-                <p>Elsa
-                  <strong>Influencer</strong>
+                <p>Blackpink
+                  <img src="images/verified.png" class="verified-image img-fluid" alt="">
+                  <strong>Singer</strong>
                 </p>
               </div>
 
-              <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+              <p class="mb-0"></p>
 
               <div class="custom-block-bottom d-flex justify-content-between mt-3">
                 <a href="#" class="bi-headphones me-1">
@@ -581,7 +584,7 @@ https://templatemo.com/tm-584-pod-talk
           <div class="custom-block custom-block-full">
             <div class="custom-block-image-wrap">
               <a href="detail-page.html">
-                <img src="images/podcast/27670664_7369753.jpg" class="custom-block-image img-fluid"
+                <img src="/assets/image-song/SongUS-UKImage/Attention.png" class="custom-block-image img-fluid"
                      alt="">
               </a>
             </div>
@@ -589,22 +592,22 @@ https://templatemo.com/tm-584-pod-talk
             <div class="custom-block-info">
               <h5 class="mb-2">
                 <a href="detail-page.html">
-                  Vintage Show
+                  Attention
                 </a>
               </h5>
 
               <div class="profile-block d-flex">
-                <img src="images/profile/cute-smiling-woman-outdoor-portrait.jpg"
+                <img src="/assets/image-singer/SingerUS-UK/Charlie Puth.PNG"
                      class="profile-block-image img-fluid" alt="">
 
                 <p>
-                  Taylor
+                  Charlie Puth
                   <img src="images/verified.png" class="verified-image img-fluid" alt="">
-                  <strong>Creator</strong>
+                  <strong>Singer</strong>
                 </p>
               </div>
 
-              <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+              <p class="mb-0"></p>
 
               <div class="custom-block-bottom d-flex justify-content-between mt-3">
                 <a href="#" class="bi-headphones me-1">
@@ -637,7 +640,7 @@ https://templatemo.com/tm-584-pod-talk
           <div class="custom-block custom-block-full">
             <div class="custom-block-image-wrap">
               <a href="detail-page.html">
-                <img src="images/podcast/12577967_02.jpg" class="custom-block-image img-fluid"
+                <img src="/assets/image-song/SongV-popImage/Hãy Trao Cho Anh.jpg" class="custom-block-image img-fluid"
                      alt="">
               </a>
             </div>
@@ -645,22 +648,22 @@ https://templatemo.com/tm-584-pod-talk
             <div class="custom-block-info">
               <h5 class="mb-2">
                 <a href="detail-page.html">
-                  Daily Talk
+                  Hãy Trao Cho Anh
                 </a>
               </h5>
 
               <div class="profile-block d-flex">
-                <img src="images/profile/handsome-asian-man-listening-music-through-headphones.jpg"
+                <img src="/assets/image-singer/SingerV-pop/Sơn Tùng MTP.jpg"
                      class="profile-block-image img-fluid" alt="">
 
                 <p>
-                  William
+                  Sơn Tùng MTP
                   <img src="images/verified.png" class="verified-image img-fluid" alt="">
-                  <strong>Vlogger</strong>
+                  <strong>Singer</strong>
                 </p>
               </div>
 
-              <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+              <p class="mb-0"></p>
 
               <div class="custom-block-bottom d-flex justify-content-between mt-3">
                 <a href="#" class="bi-headphones me-1">
@@ -753,11 +756,11 @@ https://templatemo.com/tm-584-pod-talk
         <div class="header">
           <div class="row">
             <i class="list material-icons">queue_music</i>
-            <span>Music list</span>
+            <span>Playlist</span>
           </div>
           <i id="close" class="material-icons">close</i>
         </div>
-        <ul>
+        <ul id="playlist-block">
           <!-- here li list are coming from js -->
         </ul>
       </div>
@@ -978,7 +981,6 @@ https://templatemo.com/tm-584-pod-talk
     }
     allMusicArray.push(musicObject);
   }
-
   let musicIndex = Math.floor((Math.random() * allMusicArray.length) + 1);
   isMusicPaused = true;
 
@@ -1151,79 +1153,96 @@ https://templatemo.com/tm-584-pod-talk
   let jsonmusicSelected = '<%= request.getAttribute("songSelected")%>';
   let allMusicSelectedJSON = JSON.parse(jsonmusicSelected);
   console.log(allMusicSelectedJSON);
-  let allMusicSelected = [];
+  var allMusicSelected = [];
   for(let i = 0; i < allMusicSelectedJSON.length;i++){
-    let musicObjectSelected = {
-      id: allMusicSelectedJSON[i].id,
-      name: allMusicSelectedJSON[i].name,
-      singer: allMusicSelectedJSON[i].singer.name,
-      img: allMusicSelectedJSON[i].image,
-      song: allMusicSelectedJSON[i].song,
-      duration: allMusicSelectedJSON[i].duration
-    }
-    allMusicSelected.push(musicObjectSelected);
+      let musicObjectSelected = {
+        id: allMusicSelectedJSON[i].id,
+        name: allMusicSelectedJSON[i].name,
+        singer: allMusicSelectedJSON[i].singer.name,
+        img: allMusicSelectedJSON[i].image,
+        song: allMusicSelectedJSON[i].song,
+        duration: allMusicSelectedJSON[i].duration
+      }
+      allMusicSelected.push(musicObjectSelected);
   }
-  console.log(allMusicSelected)
+
   let ulTag = wrapper.querySelector('.music-list ul');
   if(allMusicSelected.length > 0){
-    for (let i = 0; i < allMusicSelected.length; i++) {
-      //let's pass the song name, artist from the array
-      let liTag = `<li li-index="${i + 1}">
+     let html =``;
+    allMusicSelected.forEach((music,i) => {
+      html+= `<li li-index="\${music.id}" onclick="clickToPlayMusicSelect(\${music.id})">
                 <div class="row">
-                  <span>${allMusicSelected[i].name}</span>
-                  <p>${allMusicSelected[i].singer}</p>
+                  <span>\${music.name}</span>
+                  <p>\${music.singer}</p>
                 </div>
-                <span id="${allMusicSelected[i].song}" class="audio-duration">${allMusicSelected[i].duration}</span>
-                <audio class="${allMusicSelected[i].song}" src="${allMusicSelected[i].song}"></audio>
-              </li>`;
-      ulTag.insertAdjacentHTML("beforeend", liTag); //inserting the li inside ul tag
-
-      let liAudioDuartionTag = ulTag.querySelector(`#${allMusicSelected[i].song}`);
-      let liAudioTag = ulTag.querySelector(`.${allMusicSelected[i].song}`);
-      liAudioTag.addEventListener("loadeddata", ()=>{
-        let duration = liAudioTag.duration;
-        let totalMin = Math.floor(duration / 60);
-        let totalSec = Math.floor(duration % 60);
-        if(totalSec < 10){ //if sec is less than 10 then add 0 before it
-          totalSec = "0"+totalSec;
-        };
-        liAudioDuartionTag.innerText = totalMin+":"+totalSec; //passing total duation of song
-        liAudioDuartionTag.setAttribute("t-duration", totalMin+":"+totalSec); //adding t-duration attribute with total duration value
-      });
-    }
+                <span id="\${music.duration}" class="audio-duration">\${music.duration}</span>
+                <audio class="\${music.song}" src="\${music.song}"></audio>
+              </li>`
+    })
+    document.getElementById("playlist-block").innerHTML=html;
   }
+
+    // for (let i = 0; i < allMusicSelected.length; i++) {
+    //   //let's pass the song name, artist from the array
+    //   let liTag = `<li li-index="\${i + 1}">
+    //             <div class="row">
+    //               <span>\${allMusicSelected[i].name}</span>
+    //               <p>\${allMusicSelected[i].singer}</p>
+    //             </div>
+    //             <span id="\${allMusicSelected[i].song}" class="audio-duration">\${allMusicSelected[i].duration}</span>
+    //             <audio class="\${allMusicSelected[i].song}" src="\${allMusicSelected[i].song}"></audio>
+    //           </li>`;
+    //   ulTag.insertAdjacentHTML("beforeend", liTag); //inserting the li inside ul tag
+    //
+    //
+    //
+    //   let liAudioDuartionTag = ulTag.querySelector(`#\${allMusicSelected[i].song}`);
+    //   let liAudioTag = ulTag.querySelector(`.\${allMusicSelected[i].song}`);
+    //   liAudioTag.addEventListener("loadeddata", ()=>{
+    //     let duration = liAudioTag.duration;
+    //     let totalMin = Math.floor(duration / 60);
+    //     let totalSec = Math.floor(duration % 60);
+    //     if(totalSec < 10){ //if sec is less than 10 then add 0 before it
+    //       totalSec = "0"+totalSec;
+    //     };
+    //     liAudioDuartionTag.innerText = totalMin+":"+totalSec; //passing total duation of song
+    //     liAudioDuartionTag.setAttribute("t-duration", totalMin+":"+totalSec); //adding t-duration attribute with total duration value
+    //   });
+    // }
+
   // let create li tags according to array length for list
 
 
   //play particular song from the list onclick of li tag
   function playingSong(){
-    const allLiTag = ulTag.querySelectorAll("li");
+    let allLiTag = ulTag.querySelectorAll("li");
 
     for (let j = 0; j < allLiTag.length; j++) {
       let audioTag = allLiTag[j].querySelector(".audio-duration");
-
-      if(allLiTag[j].classList.contains("playing")){
-        allLiTag[j].classList.remove("playing");
-        let adDuration = audioTag.getAttribute("t-duration");
-        audioTag.innerText = adDuration;
-      }
-
-      //if the li tag index is equal to the musicIndex then add playing class in it
+      let adDuration = audioTag.getAttribute("id");
       if(allLiTag[j].getAttribute("li-index") == musicIndex){
         allLiTag[j].classList.add("playing");
-        audioTag.innerText = "Playing";
+        audioTag.innerText = "playing";
       }
+      if(allLiTag[j].classList.contains("playing")){
+        allLiTag[j].classList.remove("playing");
+        audioTag.innerText = adDuration;
+      }
+      //if the li tag index is equal to the musicIndex then add playing class in it
+      console.log(musicIndex)
 
-      allLiTag[j].setAttribute("onclick", "clicked(this)");
+
+      // allLiTag[j].setAttribute("onclick", "clicked(this)");
     }
   }
 
   //particular li clicked function
   function clickToPlayMusic(id){
+    musicIndex = id
     // let getLiIndex = element.getAttribute("li-index");
     for(var i = 0; i < allMusicArray.length; i++){
       if(id == allMusicArray[i].id){
-        musicIndex = id;
+        musicIndex = i+1;
         break;
       }
     }
@@ -1231,12 +1250,40 @@ https://templatemo.com/tm-584-pod-talk
     loadMusic(musicIndex);
     playMusic();
     playingSong();
+
   }
+  function clickToPlayMusicSelect(id){
+    musicIndex = id
+    // let getLiIndex = element.getAttribute("li-index");
+    for(var i = 0; i < allMusicArray.length; i++){
+      if(id == allMusicArray[i].id){
+        musicIndex = i+1;
+        break;
+      }
+    }
+    // musicIndex = getLiIndex; //updating current song index with clicked li index
+    loadMusic(musicIndex);
+    playMusic();
+    playingSong();
 
-
-
-
+    moreMusicBtn.click();
+  }
 </script>
+<c:if test="${requestScope.samesong != null}">
+  <script>
+    window.onload = ()=>{
+        Swal.fire({
+          title: ${requestScope.samesong},
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        });
+    }
+  </script>
+  <% request.setAttribute("samesong", null);%>
+</c:if>
 </body>
-
 </html>
